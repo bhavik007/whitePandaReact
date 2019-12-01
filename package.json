@@ -1,7 +1,7 @@
 {
   "name": "WhitePandaReact",
   "version": "1.0.0",
-  "private": true,  
+  "private": true,
   "author": "Bhavik Manek",
   "scripts": {
     "build": "webpack --mode production",

@@ -21,20 +21,20 @@ class HomePage extends React.Component {
         return (
             <div className="col-md-6 col-md-offset-3">
                 {user && <span><h1>Hi {user.name}!</h1>
-                <p>You're logged in with React!!</p>
+                    <p>You're logged in with React!!</p>
 
-                <p>
-                    <button onClick={this.handleLogOut}>Logout</button>
-                </p></span>}
+                    <p>
+                        <button onClick={this.handleLogOut}>Logout</button>
+                    </p></span>}
             </div>
         );
     }
 }
 
 function mapState(state) {
-    const { users, authentication } = state;
+    const { authentication } = state;
     const { user } = authentication;
-    return { user, users };
+    return { user };
 }
 
 const actionCreators = {
