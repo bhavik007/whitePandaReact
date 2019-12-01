@@ -24,7 +24,7 @@ class HomePage extends React.Component {
                     <p>You're logged in with React!!</p>
 
                     <p>
-                        <button onClick={this.handleLogOut}>Logout</button>
+                        <a onClick={this.handleLogOut}>Logout</a>
                     </p></span>}
             </div>
         );

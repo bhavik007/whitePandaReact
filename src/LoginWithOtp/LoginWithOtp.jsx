@@ -13,7 +13,8 @@ class LoginWithOtp extends React.Component {
                 mobile: '',
                 otp: '',
             },
-            submitted: false
+            submitted: false,
+            otpSubmitted: false,
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -35,8 +36,8 @@ class LoginWithOtp extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        this.setState({ submitted: true });
         const { user } = this.state;
+        this.setState({ submitted: true });
         if (user.mobile) {
             this.props.loginWithOtp(user.mobile);
         }
@@ -45,7 +46,7 @@ class LoginWithOtp extends React.Component {
     verifyOtpSubmit(e) {
         e.preventDefault();
 
-        this.setState({ submitted: true });
+        this.setState({ otpSubmitted: true });
         const { user } = this.state;
         if (user.mobile && user.otp) {
             this.props.verifyOtp(user.mobile, user.otp);
@@ -54,13 +55,13 @@ class LoginWithOtp extends React.Component {
 
     render() {
         const { loggingIn } = this.props;
-        const { user, submitted } = this.state;
+        const { user, submitted, otpSubmitted } = this.state;
         return (
             <div>
                 {!submitted && <div className="col-md-6 col-md-offset-3">
                     <h2>Login With OTP</h2>
                     <form name="form" onSubmit={this.handleSubmit}>
-                        <div className={'form-group' + (submitted && !mobile ? ' has-error' : '')}>
+                        <div className={'form-group' + (submitted && (!mobile || mobile.lenght != 10) ? ' has-error' : '')}>
                             <label htmlFor="mobile">Mobile</label>
                             <input type="text" className="form-control" name="mobile" value={user.mobile} onChange={this.handleChange} />
                             {submitted && !mobile &&
@@ -80,14 +81,14 @@ class LoginWithOtp extends React.Component {
                     <div>
                         <h2>Login With OTP</h2>
                         <form name="form" onSubmit={this.verifyOtpSubmit}>
-                            <div className={'form-group' + (submitted && !user.mobile ? ' has-error' : '')}>
+                            <div className={'form-group' + (otpSubmitted && !user.mobile ? ' has-error' : '')}>
                                 <label htmlFor="mobile">Mobile</label>
                                 <input type="text" className="form-control" name="mobile" value={user.mobile} onChange={this.handleChange} readOnly />
                             </div>
-                            <div className={'form-group' + (submitted && !user.otp ? ' has-error' : '')}>
+                            <div className={'form-group' + (otpSubmitted && !user.otp ? ' has-error' : '')}>
                                 <label htmlFor="otp">OTP</label>
                                 <input type="text" className="form-control" name="otp" value={user.otp} onChange={this.handleChange} />
-                                {submitted && !user.otp &&
+                                {otpSubmitted && !user.otp &&
                                     <div className="help-block">OTP is required</div>
                                 }
                             </div>
