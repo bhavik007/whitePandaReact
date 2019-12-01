@@ -53,35 +53,35 @@ class RegisterPage extends React.Component {
                 <form name="form" onSubmit={this.handleSubmit}>
                     <div className={'form-group' + (submitted && !user.first_name ? ' has-error' : '')}>
                         <label htmlFor="first_name">First Name</label>
-                        <input type="text" className="form-control" name="first_name" value={user.first_name} onChange={this.handleChange} />
+                        <input type="text" className="form-control" name="first_name" value={user.first_name} onChange={this.handleChange} pattern="[A-Za-z]" title="Only letters allowed" />
                         {submitted && !user.first_name &&
                             <div className="help-block">First Name is required</div>
                         }
                     </div>
                     <div className={'form-group' + (submitted && !user.last_name ? ' has-error' : '')}>
                         <label htmlFor="last_name">Last Name</label>
-                        <input type="text" className="form-control" name="last_name" value={user.last_name} onChange={this.handleChange} />
+                        <input type="text" className="form-control" name="last_name" value={user.last_name} onChange={this.handleChange} pattern="[A-Za-z]" title="Only letters allowed" />
                         {submitted && !user.last_name &&
                             <div className="help-block">Last Name is required</div>
                         }
                     </div>
                     <div className={'form-group' + (submitted && !user.email ? ' has-error' : '')}>
                         <label htmlFor="username">Email</label>
-                        <input type="text" className="form-control" name="email" value={user.email} onChange={this.handleChange} />
+                        <input type="email" className="form-control" name="email" value={user.email} onChange={this.handleChange} title="Enter valid email" />
                         {submitted && !user.username &&
                             <div className="help-block">Email is required</div>
                         }
                     </div>
                     <div className={'form-group' + (submitted && !user.mobile ? ' has-error' : '')}>
                         <label htmlFor="username">Mobile</label>
-                        <input type="text" className="form-control" name="mobile" value={user.mobile} onChange={this.handleChange} />
+                        <input type="mobile" className="form-control" name="mobile" value={user.mobile} onChange={this.handleChange} pattern="[0-9]{10}" title="Enter valid mobile"/>
                         {submitted && !user.username &&
                             <div className="help-block">Mobile is required</div>
                         }
                     </div>
                     <div className={'form-group' + (submitted && !user.password ? ' has-error' : '')}>
                         <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" name="password" value={user.password} onChange={this.handleChange} />
+                        <input type="password" className="form-control" name="password" value={user.password} onChange={this.handleChange} pattern="[A-Za-z0-9]" minLength='6' title="min 6 characters alphanumaric only" />
                         {submitted && !user.password &&
                             <div className="help-block">Password is required</div>
                         }

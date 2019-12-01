@@ -63,7 +63,7 @@ class LoginWithOtp extends React.Component {
                     <form name="form" onSubmit={this.handleSubmit}>
                         <div className={'form-group' + (submitted && (!mobile || mobile.lenght != 10) ? ' has-error' : '')}>
                             <label htmlFor="mobile">Mobile</label>
-                            <input type="text" className="form-control" name="mobile" value={user.mobile} onChange={this.handleChange} />
+                            <input type="mobile" className="form-control" name="mobile" value={user.mobile} onChange={this.handleChange} pattern="[0-9]{10}"  title="Enter valid mobile" />
                             {submitted && !mobile &&
                                 <div className="help-block">Mobile is required</div>
                             }
@@ -87,7 +87,7 @@ class LoginWithOtp extends React.Component {
                             </div>
                             <div className={'form-group' + (otpSubmitted && !user.otp ? ' has-error' : '')}>
                                 <label htmlFor="otp">OTP</label>
-                                <input type="text" className="form-control" name="otp" value={user.otp} onChange={this.handleChange} />
+                                <input type="text" className="form-control" name="otp" value={user.otp} onChange={this.handleChange}  pattern="[0-9]" title="Enter valid mobile"/>
                                 {otpSubmitted && !user.otp &&
                                     <div className="help-block">OTP is required</div>
                                 }

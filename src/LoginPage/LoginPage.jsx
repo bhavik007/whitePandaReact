@@ -42,14 +42,14 @@ class LoginPage extends React.Component {
                 <form name="form" onSubmit={this.handleSubmit}>
                     <div className={'form-group' + (submitted && !user_name ? ' has-error' : '')}>
                         <label htmlFor="user_name">Username</label>
-                        <input type="text" className="form-control" name="user_name" value={user_name} onChange={this.handleChange} />
+                        <input type="email" className="form-control" name="user_name" value={user_name} onChange={this.handleChange} title="Enter valid email" />
                         {submitted && !user_name &&
                             <div className="help-block">Username is required</div>
                         }
                     </div>
                     <div className={'form-group' + (submitted && !password ? ' has-error' : '')}>
                         <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} />
+                        <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} pattern="[A-Za-z0-9]" minLength='6' title="min 6 characters alphanumaric only" />
                         {submitted && !password &&
                             <div className="help-block">Password is required</div>
                         }
