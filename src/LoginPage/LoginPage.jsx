@@ -49,7 +49,7 @@ class LoginPage extends React.Component {
                     </div>
                     <div className={'form-group' + (submitted && !password ? ' has-error' : '')}>
                         <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} pattern="[A-Za-z0-9]" minLength='6' title="min 6 characters alphanumaric only" />
+                        <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} minLength='6' title="min 6 characters" />
                         {submitted && !password &&
                             <div className="help-block">Password is required</div>
                         }
